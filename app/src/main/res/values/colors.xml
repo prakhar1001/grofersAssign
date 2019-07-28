@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="cloud_burst">#373C4A</color>
+    <color name="light_slate_grey">#7C8495</color>
+    <color name="light_grey">#BFD8DADD</color>
+    <color name="white">#FFFFFF</color>
+    <color name="dark_green">#059176</color>
+    <color name="light_green">#E7FCF8</color>
+    <color name="tuna">#474C57</color>
+    <color name="charcoal">#4A4A4A</color>
+    <color name="black">#000000</color>
+</resources>

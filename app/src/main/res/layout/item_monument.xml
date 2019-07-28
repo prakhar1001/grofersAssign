@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+                name="viewModel"
+                type="com.example.grofersassignment.ui.monument.MonumentViewModel"/>
+    </data>
+
+    <androidx.cardview.widget.CardView
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            app:cardElevation="6dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            app:cardCornerRadius="6dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+
+        <LinearLayout android:layout_height="wrap_content"
+                      android:layout_width="match_parent"
+                      android:orientation="vertical">
+
+
+            <RelativeLayout android:layout_height="160dp"
+                            android:layout_width="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_height="match_parent"
+                           android:layout_width="match_parent"
+                           app:url="@{viewModel.getMonumentUrl()}"
+                           android:background="@color/light_grey"
+                           tools:ignore="ContentDescription"
+                           android:id="@+id/iv_banner"/>
+
+                <TextView android:layout_height="wrap_content"
+                          android:layout_marginRight="16dp"
+                          android:layout_marginLeft="16dp"
+                          android:layout_width="match_parent"
+                          android:id="@+id/tv_name"
+                          app:mutableText="@{viewModel.getMonumentName()}"
+                          android:textSize="16sp"
+                          android:layout_marginBottom="16dp"
+                          android:layout_alignParentBottom="true"
+                          android:textColor="@color/black"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp">
+
+                <TextView android:layout_height="wrap_content"
+                          android:layout_marginLeft="16dp"
+                          android:layout_width="wrap_content"
+                          android:id="@+id/tv_place"
+                          app:mutableText="@{viewModel.getMonumentPlace()}"
+                          android:textSize="12sp"
+                          android:fontFamily="monospace"
+                          android:textStyle="bold"
+                          android:textColor="@color/dark_green"
+                          android:layout_alignParentStart="true"
+                          android:layout_alignParentLeft="true"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

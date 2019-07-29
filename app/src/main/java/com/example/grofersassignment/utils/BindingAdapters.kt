@@ -1,5 +1,8 @@
 package com.example.grofersassignment.utils
 
+import android.net.Uri
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.grofersassignment.utils.extensions.getParentActivity
 import androidx.appcompat.widget.AppCompatImageView
 import com.bumptech.glide.Glide
+import java.net.URL
 
 
 @BindingAdapter("adapter")
@@ -35,10 +39,26 @@ fun setMutableText(view: TextView, text: MutableLiveData<String>?) {
 
 
 @BindingAdapter("bind:url")
-fun loadImage(view: AppCompatImageView, imageUrl: String?) {
-    Glide.with(view.context)
-        .load(imageUrl)
-        .into(view)
+fun setImage(view: AppCompatImageView, imageUrl: String?) {
+
+    val thread = Thread(Runnable {
+        val conn = URL(imageUrl).openConnection()
+        conn.connect()
+        val inputS = conn.getInputStream()
+
+        val uri = Uri.parse(conn.url.toString())
+
+        Handler(Looper.getMainLooper()).post(Runnable {
+            Glide.with(view.context)
+                .load(uri.getQueryParameter("imgurl"))
+                .fitCenter()
+                .into(view)
+        })
+
+        inputS.close()
+
+    })
+    thread.start()
 }
 
 
